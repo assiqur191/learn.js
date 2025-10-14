@@ -75,18 +75,34 @@ console.log(gen.next());
 
 // ->Recursive functions:
 
- function countdown(n){
-   if (n<=0) return;
-   console.log(n);
-   countdown(n-1)    
- }
+function countdown(n) {
+  if (n <= 0) return;
+  console.log(n);
+  countdown(n - 1);
+}
 
- countdown(10);
+countdown(10);
 
- function factorial (m){
+function factorial(m) {
+  if (m === 0) return 1;
+  return m * factorial(m - 1);
+}
+console.log(factorial(7));
 
-    if(m === 0) return 1;
-    return m * factorial (m-1);
+// fabonacci series
 
- }
- console.log(factorial(7));
+function fabonaccid(g) {
+  let a = 0;
+  let b = 1;
+  console.log(a);
+  if (g > 1) console.log(b);
+
+  for (let i = 2; i <= g; i++) {
+    let next = a + b;
+    console.log(next);
+    a = b;
+    b = next;
+  }
+}
+
+fabonaccid(8);
