@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .highlight {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  
+    <body>
+      <!-- <h1 id="title">Hello Dom</h1>
+    <p class="text">hijibiji-hijibiji</p>
+    <h2 class="text">this is second class</h2>
+    <h3 class="card">card 1</h3>
+    <h3 class="card">card 2</h3>
+    <h3 class="card">card 3</h3>
+    <h3 class="card">card 4</h3>
+
+    <div id="container"></div> -->
+
+      <input id="inp" placeholder="name" >
+      <p id="msg1"> </p>
+      <button id="btn">click me</button>
+      <p id="msg"></p>
+
+      <script>
+        //<-------------------------- DOM Create, remove, manupolation, appending,------------------------------------------------>
+        //   const heading = document.getElementById("title");
+        //   console.log(heading);
+        //   const paragraph = document.getElementsByClassName("text");
+        //   console.log(paragraph);
+        //   const cardfile = document.querySelectorAll(".card");
+        //   console.log(cardfile);
+
+        //   cardfile.forEach((card) => {
+        //     console.log(card.innerHTML);
+        //    container.classlist.add(highlight);
+        //   });
+
+        //   const container = document.getElementById("container");
+
+        //   const cheading = document.createElement("p");
+        //   cheading.innerText = "argentinar fk u";
+
+        //   const cpara = document.createElement("h3");
+
+        //   cpara.innerText = " dkfjakfjldsflakjjkadjflkajdflkja";
+
+        //   container.appendChild(cheading);
+        //   container.appendChild(cpara);
+        // <--------------------------------------------- event handaling------------------------------------------->
+
+        const input = document.getElementById("inp");
+        const msg1 = document.getElementById("msg1");
+
+        input.addEventListener("keyup",()=>{
+            msg1.innerHTML = `Hello, ${input.value}`;
+        })
+
+        const btn = document.getElementById("btn");
+        const msg = document.getElementById("msg");
+
+        btn.addEventListener("click", () => {
+          msg.innerText = "button is clicked";
+          btn.classList.add("highlight");
+        });
+
+        msg.onmouseover = () => {
+          msg.style.color = "green";
+        };
+        msg.onmouseout = () => {
+          msg.style.color = "orange";
+        };
+      </script>
+    </body>
+  
+</html>
