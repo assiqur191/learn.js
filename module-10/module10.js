@@ -10,11 +10,9 @@ async function fetchData() {
       throw new Error("Could not fetch resource");
     }
     const data = await respons.json();
-     const imgData = data.sprites.front_default;
-     const imgname = data.name;
+    const imgData = data.sprites.front_default;
+    const imgname = data.name;
 
-
-    
     const imgElement = document.getElementById("pokimonSprites");
     imgElement.src = imgData;
     imgElement.style.display = "block";
@@ -22,9 +20,7 @@ async function fetchData() {
     // imgName.innerText = ;
     imgName.innerHTML = JSON.stringify(imgname);
 
-
     console.log(data);
-    
   } catch (error) {
     console.error(error);
   }
