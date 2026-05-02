@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "1) request respond.",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
-  
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.11.19",
+    "express": "^5.2.1"
+  }
 }
