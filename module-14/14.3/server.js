@@ -3,6 +3,8 @@ require("dotenv").config();
 
 const multer = require("multer");
 
+const fs = require("fs");
+
 const port = process.env.PORT || 4000;
 
 const app = express();
@@ -16,6 +18,14 @@ app.use((req, res, next) => {
   next();
 });
 
+function logedTime(req, res, next) {
+  const Loged = `/n ${new Date()}-${req.method}-${req.userAgent}-${req.url}`;
+  fs.appendFile("Logedfile.txt", Loged, (err) => {
+    if (err) throw err;
+  });
+  next();
+}
+
 //custom-route-middleware
 function authMiddleware(req, res, next) {
   const token = req.headers["authorization"];
@@ -26,7 +36,7 @@ function authMiddleware(req, res, next) {
   }
 }
 
-app.get("/protection", authMiddleware, (req, res) => {
+app.get("/protection", authMiddleware, logedTime, (req, res) => {
   res.send("you are allowed");
 });
 
