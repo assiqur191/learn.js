@@ -1,0 +1,85 @@
+#express-dotenv
+#nodemon
+#
+#
+
+-performing
+// Create Route
+ router.post("/create-user", userController.createUser);
+ It returns a message - User created successfully
+
+// Read Route
+ router.get("/read-user", userController.readUser);
+ It returns a message - User read successfully
+
+// Update Route
+ router.put("/update-user", userController.updateUser);
+ It returns a message - User updated successfully
+
+// Delete Route
+ router.delete("/delete-user", userController.deleteUser);
+ It returns a message - User deleted successfully
+
+// Get All Users
+ router.get("/all-users", userController.getAllUsers);
+ It returns a message - All users fetched successfully
+
+// Get User by ID
+ router.get("/user/:id", userController.getUserById);
+ It returns a message - User fetched by ID
+
+// User Login
+ router.post("/login", userController.loginUser);
+ It returns a message - User login successful
+
+// User Logout
+ router.post("/logout", userController.logoutUser);
+ It returns a message - User logout successful
+
+// Change Password
+ router.put("/change-password", userController.changePassword);
+ It returns a message - Password changed successfully
+
+// Update Profile
+ router.put("/update-profile", userController.updateProfile);
+ It returns a message - User profile updated successfully
+
+// Make Admin
+ router.put("/make-admin/:id", userController.makeAdmin);
+ It returns a message - User made admin successfully
+
+// Remove Admin
+ router.put("/remove-admin/:id", userController.removeAdmin);
+ It returns a message - Admin role removed successfully
+
+// Search Users
+ router.get("/search", userController.searchUsers);
+ It returns a message - User search completed successfully
+
+// Filter Users
+ router.get("/filter", userController.filterUsers);
+ It returns a message - User filter completed successfully
+
+// Block User
+ router.patch("/block-user/:id", userController.blockUser);
+ It returns a message - User blocked successfully
+
+// Unblock User
+ router.patch("/unblock-user/:id", userController.unblockUser);
+ It returns a message - User unblocked successfully
+
+// Verify Email
+ router.post("/verify-email", userController.verifyEmail);
+ It returns a message - Email verified successfully
+
+// Resend Verification
+ router.post("/resend-verification", userController.resendVerification);
+ It returns a message - Verification email resent
+
+// Upload Profile Picture
+ router.post("/upload-profile-picture", userController.uploadProfilePicture);
+ It returns a message - Profile picture uploaded successfully
+
+// Delete Account
+ router.delete("/delete-account", userController.deleteAccount);
+ It returns a message - Account deleted successfully
