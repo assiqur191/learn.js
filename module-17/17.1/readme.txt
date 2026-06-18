@@ -1,0 +1,11 @@
+->here is complete database connection and data send/recive ;
+->we will install : 
+                ->npm i express dotenv nodemon ; 
+                ->npm i -D nodemon; 
+->Make a User(save username/pass in .env) in MongoDB->cluster->driver->
+                                         ->install MongoDB
+                                         ->Copy full code and replace db_User and db_pass.
+                                         ->done 
+                                         ->if dns problem solve with dns.setServer.
+->setup express, dotenv.
+->data will wite middle of connect and admin.
