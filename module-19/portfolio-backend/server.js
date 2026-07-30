@@ -5,6 +5,8 @@ import cors from "cors";
 import connectDB from "./src/configs/database.config.js";
 import authRouter from "./src/routes/auth.route.js";
 import blogRouter from "./src/routes/blog.route.js";
+import fileRouter from "./src/routes/file.route.js";
+import errorHandler from "./src/middlewares/error.middleware.js";
 
 dotenv.config();
 
@@ -18,6 +20,10 @@ connectDB();
 
 app.use("/api/users", authRouter);
 app.use("/api/blog", blogRouter);
+app.use("/api/file", fileRouter);
+
+//Golobal error Handaler
+app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
 

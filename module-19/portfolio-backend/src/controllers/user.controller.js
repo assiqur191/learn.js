@@ -55,7 +55,20 @@ export const login = async (req, res) => {
     });
   }
 };
+export const logOut = async (req, res) => {
+  try {
+    res.clearCookie("User_tokens_19");
+    res.status(200).json({
+      success: true,
+      message: "Logged out Successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
 
-const userControllers = { register, login };
+const userControllers = { register, login, logOut };
 
 export default userControllers;

@@ -2,7 +2,7 @@ import { model, Schema } from "mongoose";
 
 const fileSchema = new Schema(
   {
-    fileName: {
+    originalName: {
       type: String,
       required: true,
       trim: true,
@@ -13,14 +13,14 @@ const fileSchema = new Schema(
       required: true,
     },
 
-    publicId: {
+    public_id: {
       type: String,
       required: true,
     },
 
     fileType: {
       type: String,
-      default: "image",
+      required: true,
     },
 
     fileSize: {

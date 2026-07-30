@@ -1,34 +1,34 @@
-import { model, Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 
-const seviceSchema = new Schema(
+const serviceSchema = new Schema(
   {
     title: {
       type: String,
-      required: [true, "Service title is required"],
+      required: true,
       trim: true,
-      minlength: [3, "Title must be at least 3 characters"],
-      maxlength: [100, "Title cannot exceed 100 characters"],
     },
 
     description: {
       type: String,
-      required: [true, "Service description is required"],
+      required: true,
       trim: true,
-      minlength: [20, "Description must be at least 20 characters"],
-      maxlength: [1000, "Description cannot exceed 1000 characters"],
     },
 
     img: {
       type: String,
-      required: [true, "Service image is required"],
-      trim: true,
-      match: [/^https?:\/\/.+/, "Please provide a valid image URL"],
+      required: true,
+    },
+
+    public_id: {
+      type: String,
+      required: true,
     },
   },
   {
     timestamps: true,
   },
 );
-const Service = model("Service", seviceSchema);
+
+const Service = model("Service", serviceSchema);
 
 export default Service;
