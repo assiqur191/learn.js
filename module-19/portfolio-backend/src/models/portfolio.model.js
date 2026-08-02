@@ -13,16 +13,19 @@ const portfolioSchema = new Schema(
     img: {
       type: String,
       required: [true, "Project image is required"],
-      trim: true,
-      match: [/^https?:\/\/.+/, "Please provide a valid image URL"],
+    },
+
+    public_id: {
+      type: String,
+      required: true,
     },
 
     link: {
       type: String,
       required: [true, "Project link is required"],
       trim: true,
-      match: [/^https?:\/\/.+/, "Please provide a valid URL"],
     },
+
     category: {
       type: String,
       required: [true, "Project category is required"],
@@ -55,6 +58,7 @@ const portfolioSchema = new Schema(
     timestamps: true,
   },
 );
-const Protfolio = model("Portfolio", portfolioSchema);
 
-export default Protfolio;
+const Portfolio = model("Portfolio", portfolioSchema);
+
+export default Portfolio;
