@@ -1,6 +1,6 @@
-import { model, Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 
-const seviceSchema = new Schema(
+const serviceSchema = new Schema(
   {
     title: {
       type: String,
@@ -12,23 +12,28 @@ const seviceSchema = new Schema(
 
     description: {
       type: String,
-      required: [true, "Service description is required"],
+      required: [true, "Description is required"],
       trim: true,
       minlength: [20, "Description must be at least 20 characters"],
-      maxlength: [1000, "Description cannot exceed 1000 characters"],
+      maxlength: [500, "Description cannot exceed 500 characters"],
     },
 
     img: {
       type: String,
-      required: [true, "Service image is required"],
-      trim: true,
-      match: [/^https?:\/\/.+/, "Please provide a valid image URL"],
+      required: [true, "Image is required"],
+    },
+
+    public_id: {
+      type: String,
+      required: [true, "Cloudinary Public ID is required"],
     },
   },
   {
     timestamps: true,
+    versionKey: false,
   },
 );
-const Service = model("Service", seviceSchema);
+
+const Service = model("Service", serviceSchema);
 
 export default Service;

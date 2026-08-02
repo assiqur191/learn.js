@@ -4,7 +4,12 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import connectDB from "./src/configs/database.config.js";
 import authRouter from "./src/routes/auth.route.js";
-
+import blogRouter from "./src/routes/blog.route.js";
+import fileRouter from "./src/routes/file.route.js";
+import errorHandler from "./src/middlewares/error.middleware.js";
+import serviceRouter from "./src/routes/service.route.js";
+import portfolioRouter from "./src/routes/portfolio.route.js";
+import commentRoute from "./src/routes/comment.route.js";
 dotenv.config();
 
 const app = express();
@@ -15,7 +20,15 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 connectDB();
 
-app.use("/api/user", authRouter);
+app.use("/api/users", authRouter);
+app.use("/api/blog", blogRouter);
+app.use("/api/file", fileRouter);
+app.use("/api/service", serviceRouter);
+app.use("/api/portfolio", portfolioRouter);
+app.use("/api/comments", commentRoute);
+
+//Golobal error Handaler
+app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
 

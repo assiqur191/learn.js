@@ -2,33 +2,22 @@ import { Schema, model } from "mongoose";
 
 const commentSchema = new Schema(
   {
-    blogId: {
+    commentText: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    user: {
       type: Schema.Types.ObjectId,
-      ref: "Blog", /// taking blogmodel as ref that is can find the ref automatically
-
-      required: [true, "Blog ID is required"],
+      ref: "User",
+      required: true,
     },
 
-    name: {
-      type: String,
-      required: [true, "Name is required"],
-      trim: true,
-    },
-
-    email: {
-      type: String,
-      required: [true, "Email is required"],
-      trim: true,
-      lowercase: true,
-      match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Please enter a valid email"],
-    },
-
-    comment: {
-      type: String,
-      required: [true, "Comment is required"],
-      trim: true,
-      minlength: [5, "Comment must be at least 5 characters"],
-      maxlength: [1000, "Comment cannot exceed 1000 characters"],
+    blog: {
+      type: Schema.Types.ObjectId,
+      ref: "Blog",
+      required: true,
     },
   },
   {
