@@ -10,6 +10,7 @@ import errorHandler from "./src/middlewares/error.middleware.js";
 import serviceRouter from "./src/routes/service.route.js";
 import portfolioRouter from "./src/routes/portfolio.route.js";
 import commentRoute from "./src/routes/comment.route.js";
+import testimonialRouter from "./src/routes/testimonial.route.js";
 dotenv.config();
 
 const app = express();
@@ -26,6 +27,7 @@ app.use("/api/file", fileRouter);
 app.use("/api/service", serviceRouter);
 app.use("/api/portfolio", portfolioRouter);
 app.use("/api/comments", commentRoute);
+app.use("/api/testimonial", testimonialRouter);
 
 //Golobal error Handaler
 app.use(errorHandler);

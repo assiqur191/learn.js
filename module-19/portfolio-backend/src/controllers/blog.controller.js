@@ -178,12 +178,23 @@ export const deleteBlog = asyncHandler(async (req, res) => {
   });
 });
 
+export const blogByUser = asyncHandler(async (req, res) => {
+  const blogs = await Blog.find({
+    author: req.params.id,
+  });
+  res.status(200).json({
+    success: true,
+    data: blogs,
+  });
+});
+
 const blogController = {
   createBlog,
   getAllBlogs,
   getSingleBlog,
   updateBlog,
   deleteBlog,
+  blogByUser,
 };
 
 export default blogController;
