@@ -23,4 +23,6 @@ router.put(
 router.delete("/delete-blog/:id", validation, blogController.deleteBlog);
 // router.get("/get_all_blogs", blogController.getAllBlogs);
 
+router.get("/blog/:id", validation, blogController.blogByUser);
+
 export default router;
