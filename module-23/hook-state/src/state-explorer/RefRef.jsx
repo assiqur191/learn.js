@@ -1,6 +1,6 @@
 // import React from 'react'
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export const RefRef = () => {
   const inputRef = useRef(null);
@@ -28,7 +28,10 @@ export const RefRef = () => {
         Text
       </button>
       <button
-        onClick={() => setisColourChanged((prev) => !prev)}
+        onClick={() => {
+          setisColourChanged((prev) => !prev);
+          console.log(isColourChanged);
+        }}
         className="border bg-blue-500 rounded-2xl px-1 cursor-pointer"
       >
         show text
