@@ -59,7 +59,7 @@ const TaskDetail = ({ task, onStatusChange, onDeleteTask, onTaskUpdate }) => {
         >
           {task.status}
         </button>
-        <DatePickerInput />
+        <DatePickerInput value={task.dueDate} />
       </div>
       {/* edit , delete */}
       <div className="flex basis-[20%] items-center gap-4 rounded-full  bg-white p-4 transition  ">

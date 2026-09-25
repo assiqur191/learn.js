@@ -13,7 +13,7 @@ const App = () => {
       description: "Understand components, state and props",
       status: "In Progress",
       completed: false,
-      dueDate: "2026-09-24",
+      dueDate: "2025-09-20",
     },
     {
       id: 2,
@@ -21,7 +21,7 @@ const App = () => {
       description: "Solve 3 array and string problems",
       status: "Pending",
       completed: false,
-      dueDate: "2026-09-23",
+      dueDate: "2025-09-23",
     },
     {
       id: 3,
@@ -29,7 +29,7 @@ const App = () => {
       description: "Complete the dashboard design using Tailwind CSS",
       status: "Completed",
       completed: true,
-      dueDate: "2026-09-20",
+      dueDate: "2025-09-20",
     },
     {
       id: 4,
@@ -88,6 +88,8 @@ const App = () => {
       dueDate: "2026-10-02",
     },
   ]);
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("All");
 
   const handleStatusChange = (id) => {
     setTasks(
@@ -119,6 +121,30 @@ const App = () => {
       tasks.map((task) => (task.id === updatedTask.id ? updatedTask : task)),
     );
   };
+  const handleAddTask = (newTask) => {
+    setTasks((prev) => [...prev, newTask]);
+    alert("Success! Task added successfully.");
+  };
+
+  const filteredTask = tasks.filter((task) => {
+    const searchText = search.toLowerCase();
+
+    const matchesSearch =
+      task.title.toLowerCase().includes(searchText) ||
+      task.description.toLowerCase().includes(searchText);
+
+    const matchFilter = filter === "All" || task.status === filter;
+
+    return matchesSearch && matchFilter;
+  });
+
+  const totalTasks = tasks.length;
+
+  const completedTasks = tasks.filter(
+    (task) => task.status === "Completed",
+  ).length;
+
+  const pendingTasks = tasks.filter((task) => task.status === "Pending").length;
 
   // const getTask = (id) => {
   //   return tasks.filter((t) => t.id == id);
@@ -129,11 +155,17 @@ const App = () => {
       <Sidebar />
 
       <main className="flex-1 p-6">
-        <Header />
-        <SummaryCard />
-        <TaskForm />
+        <Header search={search} onSearch={setSearch} />
+        <SummaryCard
+          totalTasks={totalTasks}
+          completedTasks={completedTasks}
+          pendingTasks={pendingTasks}
+        />
+        <TaskForm onAddTask={handleAddTask} />
         <TaskList
-          tasks={tasks}
+          tasks={filteredTask}
+          filter={filter}
+          onFilterChange={setFilter}
           onStatusChange={handleStatusChange}
           onDeleteTask={handleDeleteTask}
           onTaskUpdate={handleTaskUpdate}

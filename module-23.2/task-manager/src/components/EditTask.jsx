@@ -21,6 +21,8 @@ import {
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { useState } from "react";
+import { DatePickerInput } from "./DataPicker";
+// import { DatePickerInput } from "./DatePicker";
 // import { useState } from "react";
 
 const EditTask = ({ task, onTaskUpdate }) => {
@@ -29,6 +31,7 @@ const EditTask = ({ task, onTaskUpdate }) => {
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
   const [status, setStatus] = useState(task.status);
+  const [dueDate, setDueDate] = useState(task.dueDate);
 
   const items = [
     { label: "Select a status", value: null },
@@ -53,6 +56,7 @@ const EditTask = ({ task, onTaskUpdate }) => {
       title: title,
       description: description,
       status: status,
+      dueDate: dueDate,
       completed: status === "Completed",
     };
     onTaskUpdate(updatedTask);
@@ -91,21 +95,25 @@ const EditTask = ({ task, onTaskUpdate }) => {
               />
             </div>
 
-            <Select value={status} onValueChange={setStatus}>
-              <SelectTrigger className="w-full max-w-48">
-                <SelectValue placeholder="select status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>Select Status</SelectLabel>
-                  {items.map((item) => (
-                    <SelectItem key={item.value} value={item.value}>
-                      {item.label}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+            <div className="flex flex-row gap-2 justify-between">
+              <Select value={status} onValueChange={setStatus}>
+                <SelectTrigger className="w-full max-w-48">
+                  <SelectValue placeholder="select status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Select Status</SelectLabel>
+                    {items.map((item) => (
+                      <SelectItem key={item.value} value={item.value}>
+                        {item.label}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              <DatePickerInput value={dueDate} onChange={setDueDate} />
+            </div>
+
             <div className="mt-10 flex justify-end">
               <Button type="submit" variant="secondary">
                 Save

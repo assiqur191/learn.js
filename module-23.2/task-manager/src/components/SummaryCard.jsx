@@ -2,7 +2,7 @@
 
 import { Check, Clock, Menu, Sparkles, StarCheck } from "lucide-react";
 
-export const SummaryCard = () => {
+export const SummaryCard = ({ totalTasks, completedTasks, pendingTasks }) => {
   return (
     <div>
       <div className=" mt-6 flex flex-col flex-wrap gap-4 md:flex-row ">
@@ -10,7 +10,7 @@ export const SummaryCard = () => {
         <div className="flex flex-col border border-black bg-[#c8deef]   p-5 w-70 rounded-2xl mt-4">
           <Menu className="text-white bg-blue-400 h-10 w-10 rounded-full p-2" />
           <p className="font-semibold font-display text-lg pt-2">Total Tasks</p>
-          <h1 className="text-3xl font-bold pt-2">10</h1>
+          <h1 className="text-3xl font-bold pt-2">{totalTasks}</h1>
           <p className="pt-2 text-slate-500">All tasks in your list</p>
         </div>
         {/* completed tasks */}
@@ -19,14 +19,14 @@ export const SummaryCard = () => {
           <p className="font-semibold font-display text-lg pt-2">
             Completed Tasks
           </p>
-          <h1 className="text-3xl font-bold pt-2">7</h1>
+          <h1 className="text-3xl font-bold pt-2">{completedTasks}</h1>
           <p className="pt-2 text-slate-500 ">Tasks you have completed</p>
         </div>
         {/* pending tasks */}
         <div className="flex flex-col border border-black bg-[#FCF7F1]   p-5 w-70 rounded-2xl mt-4">
           <Clock className="text-white  bg-[#e5ac66] h-10 w-10 rounded-full p-2" />
           <p className="font-semibold font-display text-lg pt-2">Pending</p>
-          <h1 className="text-3xl font-bold pt-2">3</h1>
+          <h1 className="text-3xl font-bold pt-2">{pendingTasks}</h1>
           <p className="pt-2 text-slate-500 ">Still to be done</p>
         </div>
         {/* Keep going */}
@@ -41,7 +41,7 @@ export const SummaryCard = () => {
           </p>
         </div>
       </div>
-      <div className="flex gap-4 mt-2">
+      {/* <div className="flex gap-4 mt-2">
         <button className="mt-6 rounded-2xl bg-blue-500 px-4 py-2 w-25 text-sm font-medium text-white hover:bg-blue-600 cursor-pointer">
           All
         </button>
@@ -51,7 +51,7 @@ export const SummaryCard = () => {
         <button className="mt-6 rounded-2xl bg-[#c8deef] px-4 py-2 w-25 text-sm font-medium text-black hover:bg-blue-600  hover:text-white cursor-pointer">
           Completed
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

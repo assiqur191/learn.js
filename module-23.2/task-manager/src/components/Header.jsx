@@ -1,8 +1,9 @@
+import { FileSearchCorner } from "lucide-react";
 import arrow from "../assets/arrow-through-heart-fill.svg";
-import search from "../assets/search.svg";
+// import search from "../assets/search.svg";
 import addcheck from "../assets/check-circle-16-solid.svg";
 
-export default function Header() {
+export default function Header({ search, onSearch }) {
   return (
     <header className="bg-white shadow w-full">
       {/* 1. Changed "flex" to "flex flex-col md:flex-row md:items-center" */}
@@ -29,10 +30,12 @@ export default function Header() {
           {/* Search Input Box */}
           {/* 3. Removed hardcoded px-4 inside input to prevent input box blow-out */}
           <div className="flex items-center flex-1 sm:flex-none gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 transition focus-within:ring-2 focus-within:ring-blue-500">
-            <img src={search} alt="search" className="h-4 w-4 shrink-0" />
+            <FileSearchCorner color="#155724" />
             <input
               type="text"
               placeholder="Search tasks..."
+              value={search}
+              onChange={(e) => onSearch(e.target.value)}
               className="w-full bg-transparent text-sm text-slate-700 placeholder:text-slate-400 outline-none"
             />
           </div>
@@ -45,7 +48,7 @@ export default function Header() {
                 alt="add check"
                 className="h-4 w-4 shrink-0"
               />
-              <span>Add Task</span>
+              <span>Find Task</span>
             </button>
           </div>
         </div>
