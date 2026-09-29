@@ -3,7 +3,7 @@ import taskLogo from "../assets/tasklogo.svg";
 import { Switch } from "./ui/switch";
 // import { Checkbox } from "./ui/checkbox";
 
-const Sidebar = () => {
+const Sidebar = ({ filter, onFilterChange }) => {
   return (
     <aside className=" hidden w-64 m-4  rounded-2xl shrink-0 bg-white p-6 shadow-sm md:block">
       <div className="flex h-full flex-col justify-between">
@@ -32,19 +32,40 @@ const Sidebar = () => {
           <nav className="mt-10">
             <ul className="space-y-2">
               <li>
-                <button className="w-full rounded-lg bg-blue-50 px-4 py-3 text-left text-sm font-medium text-blue-600">
+                <button
+                  onClick={() => onFilterChange("All")}
+                  className={`w-full rounded-lg px-4 py-3 text-left text-sm font-medium ${
+                    filter === "All"
+                      ? "bg-blue-50 text-blue-600"
+                      : "text-slate-600 hover:bg-slate-100"
+                  }`}
+                >
                   All Tasks
                 </button>
               </li>
 
               <li>
-                <button className="w-full rounded-lg px-4 py-3 text-left text-sm text-slate-600 hover:bg-slate-100">
+                <button
+                  onClick={() => onFilterChange("Pending")}
+                  className={`w-full rounded-lg px-4 py-3 text-left text-sm font-medium ${
+                    filter === "Pending"
+                      ? "bg-blue-50 text-blue-600"
+                      : "text-slate-600 hover:bg-slate-100"
+                  }`}
+                >
                   Pending
                 </button>
               </li>
 
               <li>
-                <button className="w-full rounded-lg px-4 py-3 text-left text-sm text-slate-600 hover:bg-slate-100">
+                <button
+                  onClick={() => onFilterChange("Completed")}
+                  className={`w-full rounded-lg px-4 py-3 text-left text-sm font-medium ${
+                    filter === "Completed"
+                      ? "bg-blue-50 text-blue-600"
+                      : "text-slate-600 hover:bg-slate-100"
+                  }`}
+                >
                   Completed
                 </button>
               </li>
