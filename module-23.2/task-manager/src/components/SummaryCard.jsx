@@ -7,14 +7,14 @@ export const SummaryCard = ({ totalTasks, completedTasks, pendingTasks }) => {
     <div>
       <div className=" mt-6 flex flex-col flex-wrap gap-4 md:flex-row ">
         {/* total tasks */}
-        <div className="flex flex-col border border-black bg-[#c8deef]   p-5 w-70 rounded-2xl mt-4">
+        <div className="flex flex-col border border-black bg-[#c8deef]   p-5 w-70 rounded-2xl mt-4 dark:bg-slate-900 dark:text-white">
           <Menu className="text-white bg-blue-400 h-10 w-10 rounded-full p-2" />
           <p className="font-semibold font-display text-lg pt-2">Total Tasks</p>
           <h1 className="text-3xl font-bold pt-2">{totalTasks}</h1>
           <p className="pt-2 text-slate-500">All tasks in your list</p>
         </div>
         {/* completed tasks */}
-        <div className="flex flex-col border border-black bg-[#9fe4b7]   p-5 w-70 rounded-2xl mt-4">
+        <div className="flex flex-col border border-black bg-[#9fe4b7]   p-5 w-70 rounded-2xl mt-4 dark:bg-slate-900 dark:text-white">
           <Check className="text-white bg-green-500 h-10 w-10 rounded-full p-2" />
           <p className="font-semibold font-display text-lg pt-2">
             Completed Tasks
@@ -23,14 +23,14 @@ export const SummaryCard = ({ totalTasks, completedTasks, pendingTasks }) => {
           <p className="pt-2 text-slate-500 ">Tasks you have completed</p>
         </div>
         {/* pending tasks */}
-        <div className="flex flex-col border border-black bg-[#FCF7F1]   p-5 w-70 rounded-2xl mt-4">
+        <div className="flex flex-col border border-black bg-[#FCF7F1]   p-5 w-70 rounded-2xl mt-4 dark:bg-slate-900 dark:text-white">
           <Clock className="text-white  bg-[#e5ac66] h-10 w-10 rounded-full p-2" />
           <p className="font-semibold font-display text-lg pt-2">Pending</p>
           <h1 className="text-3xl font-bold pt-2">{pendingTasks}</h1>
           <p className="pt-2 text-slate-500 ">Still to be done</p>
         </div>
         {/* Keep going */}
-        <div className="flex flex-col border border-black bg-[#dcc8ef]   p-5 w-70 rounded-2xl mt-4">
+        <div className="flex flex-col border border-black bg-[#dcc8ef]   p-5 w-70 rounded-2xl mt-4 dark:bg-slate-900 dark:text-white">
           <StarCheck className="text-white  bg-[#9d53e6] h-10 w-10 rounded-full p-2" />
           <p className="font-semibold font-display text-lg pt-2">Keep Going</p>
           {/* <h1 className="text-3xl font-bold pt-2">3</h1> */}

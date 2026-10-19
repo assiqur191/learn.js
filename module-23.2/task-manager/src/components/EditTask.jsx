@@ -34,7 +34,6 @@ const EditTask = ({ task, onTaskUpdate }) => {
   const [dueDate, setDueDate] = useState(task.dueDate);
 
   const items = [
-    { label: "Select a status", value: null },
     {
       value: "Pending",
       label: "Pending",
@@ -53,14 +52,14 @@ const EditTask = ({ task, onTaskUpdate }) => {
     e.preventDefault();
     const updatedTask = {
       ...task,
-      title: title,
-      description: description,
+      title: title.trim(),
+      description: description.trim(),
       status: status,
-      dueDate: dueDate,
+      dueDate: dueDate || null,
       completed: status === "Completed",
     };
-    onTaskUpdate(updatedTask);
-    setOpen(false);
+    const success = onTaskUpdate(updatedTask);
+    if (success) setOpen(false);
   };
   return (
     <Dialog open={open} onOpenChange={setOpen}>

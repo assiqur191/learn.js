@@ -47,11 +47,11 @@ export const TaskList = ({
         {tasks.length > 0 ? (
           tasks.map((task) => (
             <Task
-              key={task.id}
+              key={task._id}
               task={task}
               onStatusChange={onStatusChange}
               onDeleteTask={onDeleteTask}
-              onUpdateTask={onTaskUpdate}
+              onTaskUpdate={onTaskUpdate}
             />
           ))
         ) : (

@@ -5,19 +5,12 @@ import { Separator } from "./ui/separator";
 import { cn } from "cn";
 import EditTask from "./EditTask";
 
-export const Task = ({
-  task,
-  getTask,
-  onStatusChange,
-  onDeleteTask,
-  onTaskUpdate,
-}) => {
+export const Task = ({ task, onStatusChange, onDeleteTask, onTaskUpdate }) => {
   return (
     <div>
       {/* main div */}
       <TaskDetail
         task={task}
-        getTask={getTask}
         onStatusChange={onStatusChange}
         onDeleteTask={onDeleteTask}
         onTaskUpdate={onTaskUpdate}
@@ -30,8 +23,9 @@ export const Task = ({
 export default Task;
 
 const TaskDetail = ({ task, onStatusChange, onDeleteTask, onTaskUpdate }) => {
+  // Use _id if available, otherwise use id
   return (
-    <div className="flex flex-col md:flex-row items-center  bg-white rounded-2xl shadow-md  p-5 mt-4">
+    <div className="flex flex-col md:flex-row items-center  bg-white rounded-2xl shadow-md  p-5 mt-4 dark:bg-slate-900 dark:text-white">
       {/* task items */}
       <div className="flex basis-[50%] items-center gap-4 rounded-full  p-4 transition focus-within:ring-2 focus-within:ring-blue-500 ">
         <label>
@@ -40,15 +34,19 @@ const TaskDetail = ({ task, onStatusChange, onDeleteTask, onTaskUpdate }) => {
             className="form-checkbox h-5 w-5 text-blue-500"
           />
         </label>
-        <div className="flex flex-col gap-1">
-          <h2 className="font-bold text-slate-700">{task.title}</h2>
-          <p className="text-sm text-slate-700">{task.description}</p>
+        <div className="flex flex-col gap-1 ">
+          <h2 className="font-bold text-slate-700 dark:text-white">
+            {task.title}
+          </h2>
+          <p className="text-sm text-slate-700 dark:text-white">
+            {task.description}
+          </p>
         </div>
       </div>
       {/* status, date */}
-      <div className="flex flex-col md:flex-row basis-[30%] items-center   rounded-full  bg-white p-4 transition  ">
+      <div className="flex flex-col md:flex-row basis-[30%] items-center   rounded-full  bg-white p-4 transition  dark:bg-slate-900 dark:text-white">
         <button
-          onClick={() => onStatusChange(task.id)}
+          onClick={() => onStatusChange(task._id)}
           className={cn(
             " border text-white py-2 px-4 rounded-full  transition active:scale-95 bg-[#a654dc]",
             task.status === "Pending" && "bg-purple-500 hover:bg-purple-600",
@@ -59,15 +57,21 @@ const TaskDetail = ({ task, onStatusChange, onDeleteTask, onTaskUpdate }) => {
         >
           {task.status}
         </button>
-        <DatePickerInput value={task.dueDate} />
+        <DatePickerInput
+          value={task.dueDate}
+          onChange={(newDate) => onTaskUpdate({ ...task, dueDate: newDate })}
+        />
       </div>
       {/* edit , delete */}
-      <div className="flex basis-[20%] items-center gap-4 rounded-full  bg-white p-4 transition  ">
+      <div className="flex basis-[20%] items-center gap-4 rounded-full  bg-white p-4 transition dark:bg-slate-900 dark:text-white ">
         {/* <div>
           <Pencil className=" hover:bg-green-400 hover:rounded-full hover:text-white p-2 h-11 w-11" />
         </div> */}
         <EditTask task={task} onTaskUpdate={onTaskUpdate} />
-        <button onClick={() => onDeleteTask(task.id)}>
+        <button
+          aria-label={`Delete ${task.title}`}
+          onClick={() => onDeleteTask(task._id)}
+        >
           <TrashOff className=" hover:bg-red-400 hover:rounded-full hover:text-white p-2 h-11 w-11" />
         </button>
       </div>

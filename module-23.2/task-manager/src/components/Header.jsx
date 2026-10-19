@@ -1,23 +1,19 @@
-import { FileSearchCorner } from "lucide-react";
-import arrow from "../assets/arrow-through-heart-fill.svg";
+import { FileSearchCorner, HeartPlus } from "lucide-react";
+// import arrow from "../assets/arrow-through-heart-fill.svg";
 // import search from "../assets/search.svg";
 import addcheck from "../assets/check-circle-16-solid.svg";
 
-export default function Header({ search, onSearch }) {
+export default function Header({ search, onSearch, user }) {
   return (
-    <header className="bg-white shadow w-full">
+    <header className="bg-white shadow w-full dark:bg-slate-900 dark:text-white">
       {/* 1. Changed "flex" to "flex flex-col md:flex-row md:items-center" */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4">
         {/* User Info */}
         <div className="flex flex-col items-start w-full md:w-auto">
           <p className="text-xs text-slate-500">Good Morning,</p>
-          <h1 className="text-2xl sm:text-3xl font-bold flex items-center flex-wrap">
-            John Doe
-            <img
-              src={arrow}
-              alt="arrow"
-              className="h-6 w-6 sm:h-8 sm:w-8 ml-2 object-contain"
-            />
+          <h1 className="text-2xl sm:text-3xl font-bold flex items-center flex-wrap dark:text-green-600 gap-2">
+            {user?.name || user.email || "User"}
+            <HeartPlus className="text-red-500 dark:text-green-600" />
           </h1>
           <p className="text-xs text-slate-600 mt-1">
             Here's what's happening with your tasks today.

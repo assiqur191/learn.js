@@ -72,7 +72,7 @@ export const TaskForm = ({ onAddTask }) => {
     <Dialog open={open} onOpenChange={setOpen}>
       <div>
         <DialogTrigger asChild>
-          <div className="flex md:w-auto flex-col md:flex-row items-center justify-center gap-5 w-auto bg-white rounded-2xl shadow-md  p-5 mt-4">
+          <div className="flex md:w-auto flex-col md:flex-row items-center justify-center gap-5 w-auto bg-white rounded-2xl shadow-md  p-5 mt-4 dark:bg-slate-900 dark:text-white">
             {/* search */}
             <div className="flex basis-[60%] items-center gap-2 rounded-full border border-slate-400 bg-white px-4 py-1 transition focus-within:ring-2 focus-within:ring-blue-500 ">
               <CirclePlus className="h-10 w-10 text-white bg-blue-500 rounded-full" />
